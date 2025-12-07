@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/signupAuth"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_primary"
+    tools:context=".SignupAuth">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/headerSignup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="32dp"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:id="@+id/actionBackRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/arrow_left"
+            app:iconGravity="start"
+            app:iconTint="@color/white"
+            app:iconSize="25dp"
+            app:layout_constraintStart_toStartOf="@id/headerSignup"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registrasi"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        style="@style/CustomContainerWhite"
+        android:id="@+id/bodySignup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerSignup">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/headerSignup">
+            <EditText
+                style="@style/CustomEditText"
+                android:id="@+id/inputFirstName"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:hint="Nama Depan"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:inputType="text" />
+
+            <EditText
+                style="@style/CustomEditText"
+                android:id="@+id/inputLastName"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:hint="Nama Belakang"
+                android:inputType="text" />
+        </LinearLayout>
+
+        <EditText
+            style="@style/CustomEditText"
+            android:id="@+id/inputPhoneNumber"
+            android:hint="Nomor Ponsel"
+            android:layout_marginBottom="10dp"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            style="@style/CustomEditText"
+            android:id="@+id/inputNIK"
+            android:hint="NIK"
+            android:layout_marginBottom="10dp"
+            android:inputType="text" />
+
+        <EditText
+            style="@style/CustomEditText"
+            android:id="@+id/inputAddress"
+            android:hint="Alamat Lengkap"
+            android:layout_marginBottom="10dp"
+            android:inputType="textMultiLine" />
+
+        <EditText
+            style="@style/CustomEditText"
+            android:id="@+id/inputEmail"
+            android:hint="Email"
+            android:layout_marginBottom="10dp"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            style="@style/CustomEditText"
+            android:id="@+id/inputPassword"
+            android:hint="Password"
+            android:layout_marginBottom="10dp"
+            android:inputType="textPassword" />
+
+        <EditText
+            style="@style/CustomEditText"
+            android:id="@+id/inputConfirmPassword"
+            android:hint="Konfirmasi Password"
+            android:layout_marginBottom="10dp"
+            android:inputType="textPassword" />
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/btnAuth"
+        android:id="@+id/button_login"
+        android:text="Daftar"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
+        app:cornerRadius="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bodySignup"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
