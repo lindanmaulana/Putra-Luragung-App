@@ -5,70 +5,65 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:padding="20dp"
+    android:background="@drawable/gradient_blue_white"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/mainHeroImage"
-        android:layout_width="250dp"
-        android:layout_height="240dp"
-        android:src="@drawable/loader_bus"
-        android:layout_marginBottom="200dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-    <TextView
-        android:id="@+id/mainHeroTitle"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Wellcome to the app"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainHeroImage" />
+        android:layout_height="match_parent"
+        android:layout_margin="30dp"
+        tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/mainHeroDesc"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:text="Aplikasi praktis untuk booking bus, bayar, dan lihat update perjalanan."
-        android:textAlignment="center"
-        android:textSize="16sp"
-        android:textStyle="normal"
-        android:textColor="@color/bg_primary"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainHeroTitle" />
+        <ImageView
+            android:id="@+id/mainHeroImage"
+            android:layout_width="wrap_content"
+            android:layout_height="420dp"
+            android:src="@drawable/bus_1"
+            android:layout_marginBottom="200dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+        <TextView
+            android:id="@+id/mainHeroTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="We're\ngoing\non a trip"
+            android:textAlignment="textStart"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            android:textColor="@color/bg_primary"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/mainHeroDesc" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnToLogin"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/bg_primary"
-        android:text="Get Started"
-        android:textSize="16sp"
-        android:layout_marginTop="80dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainHeroDesc"/>
+        <TextView
+            android:id="@+id/mainHeroDesc"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Are you in?."
+            android:textAlignment="textStart"
+            android:textSize="16sp"
+            android:textStyle="normal"
+            android:textColor="@color/bg_primary"
+            android:layout_marginBottom="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btnStarted" />
 
-    <com.google.android.material.button.MaterialButton
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:id="@+id/btnToRegister"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:text="Create an account"
-        android:textColor="@color/bg_primary"
-        android:textSize="16sp"
-        android:textAllCaps="false"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnToLogin"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnStarted"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:backgroundTint="@color/bg_primary"
+            android:text="Get Started"
+            android:textSize="16sp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:cornerRadius="8dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

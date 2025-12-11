@@ -6,16 +6,14 @@ import android.os.Looper
 import android.os.Handler
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
-class ScreenLoading : AppCompatActivity() {
+class LoadingScreen : AppCompatActivity() {
     private val SPLASH_TIME_LOAD: Long = 3000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_screen_loading)
+        setContentView(R.layout.activity_loading_screen)
 
         Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(this, MainActivity::class.java)

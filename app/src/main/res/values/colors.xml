@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="bg_primary">#0998E7</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="bg_primary">#F9B900</color>
     <color name="bus_blue">#0051AA</color>
+    <color name="gray">#737373</color>
+    <color name="gray_opacity_50">#80737373</color>
 </resources>

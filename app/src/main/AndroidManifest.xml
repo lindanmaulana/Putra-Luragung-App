@@ -12,6 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PutraLuragungTrans">
         <activity
+            android:name=".Onboarding"
+            android:exported="false" />
+        <activity
+            android:name=".OnboardingPageFragment"
+            android:exported="false" />
+        <activity
+            android:name=".OnboardingSecondScreen"
+            android:exported="false" />
+        <activity
+            android:name=".OnboardingFirstScreen"
+            android:exported="false" />
+        <activity
             android:name=".Dashboard"
             android:exported="false" />
         <activity
@@ -24,7 +36,7 @@
             android:name=".SigninAuth"
             android:exported="false" />
         <activity
-            android:name=".ScreenLoading"
+            android:name=".LoadingScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

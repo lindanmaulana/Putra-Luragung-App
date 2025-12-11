@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.view.animation.LinearInterpolator
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -18,15 +19,20 @@ class SigninAuth : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_signin_auth)
 
+        val actionSignin = findViewById<Button>(R.id.actionSignin)
         val actionToRegister = findViewById<TextView>(R.id.actionToRegister)
         val busImage = findViewById<ImageView>(R.id.busImage)
         val formSignin = findViewById<LinearLayout>(R.id.formSignin)
+
+        actionSignin.setOnClickListener {
+            val intent = Intent(this, Dashboard::class.java)
+            startActivity(intent)
+        }
 
         actionToRegister.setOnClickListener {
             val intent = Intent(this, SignupAuth::class.java)
             startActivity(intent)
         }
-
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.signinAuth)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
