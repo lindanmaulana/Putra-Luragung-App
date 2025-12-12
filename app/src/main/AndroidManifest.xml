@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PutraLuragungTrans">
         <activity
+            android:name=".InvoiceList"
+            android:exported="false" />
+        <activity
+            android:name=".BusList"
+            android:exported="false" />
+        <activity
             android:name=".Onboarding"
             android:exported="false" />
         <activity

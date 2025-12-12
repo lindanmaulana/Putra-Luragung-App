@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_blue_white"
+    tools:context=".DashboardHomeFragment">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/containerSearchBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+            <EditText
+                android:id="@+id/editTextSearch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Cari tujuan atau bus..."
+                android:inputType="text"
+                android:singleLine="true"
+                android:background="@android:color/transparent"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/iconSearchAction"
+                app:layout_constraintHorizontal_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iconSearchAction"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/search_icon"
+                android:padding="4dp"
+                android:contentDescription="Search Icon"
+
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:tint="@color/gray" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/containerRecycleViewListBus"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="16dp"
+
+        android:layout_marginTop="-70dp"
+        android:clipToPadding="false"
+        android:paddingTop="70dp"
+        android:paddingBottom="70dp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/containerSearchBar"
+        tools:listitem="@layout/activity_list_bus"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

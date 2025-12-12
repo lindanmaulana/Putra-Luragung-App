@@ -1,0 +1,21 @@
+package com.pab.putraluragungtrans
+
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+data class Ticket(
+    val routeTitle: String,
+    val detailActionText: String,
+    val departureDate: String,
+
+    val originCity: String,
+    val originTerminal: String,
+    val departureTime: String,
+
+    val destinationCity: String,
+    val destinationTerminal: String,
+    val arrivalTime: String,
+
+    val distanceKm: String
+) : Parcelable

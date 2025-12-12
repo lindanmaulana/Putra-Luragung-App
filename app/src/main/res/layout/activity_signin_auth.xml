@@ -8,31 +8,41 @@
     android:background="@color/white"
     tools:context=".SigninAuth">
 
-    <TextView
-        android:id="@+id/text_header"
-        android:layout_width="wrap_content"
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
-        android:textSize="24sp"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        app:cardBackgroundColor="@color/bg_primary"
+        app:cardElevation="8dp"
+        app:shapeAppearanceOverlay="@style/BottomRoundedCornerCard"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:background="@color/bg_primary">
 
-    <TextView
-        android:id="@+id/signinHeaderDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Wellcome back to the app"
-        android:textSize="16sp"
-        android:textColor="@color/bg_primary"
-        android:textStyle="normal"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/text_header" />
+            <TextView
+                android:id="@+id/text_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:textSize="24sp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/signinHeaderDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wellcome back to the LuragungTransApp"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:textStyle="normal" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <FrameLayout
         android:layout_width="360dp"
@@ -42,7 +52,6 @@
         android:adjustViewBounds="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_header"
         app:layout_constraintBottom_toTopOf="@id/card_login"
         app:layout_constraintVertical_bias="0.0">
 
@@ -55,7 +64,6 @@
 
             android:layout_marginEnd="-15dp"
             android:adjustViewBounds="true"
-
             android:translationX="1000dp"
             />
     </FrameLayout>
@@ -107,6 +115,7 @@
                 android:id="@+id/actionSignin"
                 android:text="Masuk"
                 android:layout_marginBottom="16dp"
+                android:textColor="@color/bg_primary"
                 app:cornerRadius="8dp" />
 
             <LinearLayout

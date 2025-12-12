@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("org.jetbrains.kotlin.plugin.parcelize")
 }
 
 android {
@@ -45,5 +46,5 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("androidx.viewpager2:viewpager2:1.1.0")
-    implementation("com.google.code.gson:gson:2.10.1")
+    implementation("androidx.appcompat:appcompat:1.6.1")
 }

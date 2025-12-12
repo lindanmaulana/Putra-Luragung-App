@@ -10,7 +10,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import java.io.File
 import java.io.IOException
-import com.google.gson.Gson
 class SignupAuth : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,31 +18,6 @@ class SignupAuth : AppCompatActivity() {
 
         val actionRegister = findViewById<Button>(R.id.actionRegister)
         val actionBackRegister = findViewById<Button>(R.id.actionBackRegister)
-
-//        actionRegister.setOnClickListener {
-//            val inFirstName = findViewById<EditText>(R.id.inputFirstName).text.toString()
-//            val inLastName = findViewById<EditText>(R.id.inputLastName).text.toString()
-//            val inPhoneNumber = findViewById<EditText>(R.id.inputPhoneNumber).text.toString()
-//            val inNik = findViewById<EditText>(R.id.inputNIK).text.toString()
-//            val inAddress = findViewById<EditText>(R.id.inputAddress).text.toString()
-//            val inEmail = findViewById<EditText>(R.id.inputEmail).text.toString()
-//            val inPassword = findViewById<EditText>(R.id.inputPassword).text.toString()
-//            val inConfirmPassword = findViewById<EditText>(R.id.inputConfirmPassword).text.toString()
-//
-//            val newUser = UserSignup(
-//                firstName = inFirstName,
-//                lastName = inLastName,
-//                phoneNumber = inPhoneNumber,
-//                nik = inNik,
-//                address = inAddress,
-//                email = inEmail,
-//                password = inPassword,
-//                confirmPassword = inConfirmPassword
-//            )
-//
-//            var fileName = "user-$inEmail.json"
-//            saveToCacheSignup(fileName, newUser)
-//        }
 
         actionBackRegister.setOnClickListener {
             val intent = Intent(this, SigninAuth::class.java)
