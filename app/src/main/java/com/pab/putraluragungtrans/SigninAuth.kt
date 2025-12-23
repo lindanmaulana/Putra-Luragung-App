@@ -8,25 +8,66 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
+import com.google.android.material.textfield.TextInputEditText
+import kotlinx.coroutines.launch
 
 class SigninAuth : AppCompatActivity() {
+    private lateinit var db: AppDatabase
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_signin_auth)
 
+        db = AppDatabase.getDatabase(this)
+
         val actionSignin = findViewById<Button>(R.id.actionSignin)
         val actionToRegister = findViewById<TextView>(R.id.actionToRegister)
-        val busImage = findViewById<ImageView>(R.id.busImage)
         val formSignin = findViewById<LinearLayout>(R.id.formSignin)
 
+        val inputEmail = findViewById<TextInputEditText>(R.id.inputEmail)
+        val inputPassword = findViewById<TextInputEditText>(R.id.inputPassword)
+
         actionSignin.setOnClickListener {
-            val intent = Intent(this, Dashboard::class.java)
-            startActivity(intent)
+            val email = inputEmail.text.toString().trim()
+            val password = inputPassword.text.toString().trim()
+
+            when {
+                email.isEmpty() || password.isEmpty() -> {
+                    Toast.makeText(this@SigninAuth, "Email dan Password wajib diisi", Toast.LENGTH_SHORT).show()
+                }
+
+                else -> {
+                    lifecycleScope.launch {
+                        val user = db.userDao().getUserByEmail(email)
+
+                        when {
+                            user == null -> {
+                                Toast.makeText(this@SigninAuth, "Invalid credentials", Toast.LENGTH_SHORT).show()
+                            }
+
+                            user.password != password -> {
+                                Toast.makeText(this@SigninAuth, "Invalid credentials", Toast.LENGTH_SHORT).show()
+                            }
+
+                            else -> {
+                                Toast.makeText(this@SigninAuth, "Login Berhasil", Toast.LENGTH_SHORT).show()
+
+                                val session = SessionManager(this@SigninAuth)
+                                session.createLoginSession(user.email)
+
+                                val intent = Intent(this@SigninAuth, Dashboard::class.java)
+                                startActivity(intent)
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         actionToRegister.setOnClickListener {
@@ -40,7 +81,6 @@ class SigninAuth : AppCompatActivity() {
             insets
         }
 
-        startSlideToXAnimation(busImage)
         startSlideToYAnimation(formSignin)
     }
 

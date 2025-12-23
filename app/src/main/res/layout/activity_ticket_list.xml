@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="16dp"
@@ -25,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/tvRouteTitle"
+                android:id="@+id/tvBusName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
@@ -55,10 +56,10 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:src="@drawable/calendar_icon"
-                android:tint="@android:color/white"
+                app:tint="@color/white"
                 android:layout_marginTop="8dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvRouteTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvBusName"
                 android:contentDescription="kalendar" />
 
             <TextView
@@ -162,12 +163,11 @@
                 android:background="@drawable/shape_dot"
                 app:layout_constraintBottom_toBottomOf="@id/tvOriginCity"
                 app:layout_constraintTop_toTopOf="@id/tvOriginCity"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvOriginCity"
                 app:layout_constraintHorizontal_bias="0.25" />
             <View
                 android:layout_width="0dp"
-                android:layout_height="2dp"
+                android:layout_height="6dp"
                 android:background="@drawable/shape_dashed_line"
                 app:layout_constraintStart_toEndOf="@id/dotOrigin"
                 app:layout_constraintEnd_toStartOf="@id/iconBus"
@@ -186,20 +186,9 @@
                 app:layout_constraintBottom_toBottomOf="@id/tvOriginCity"
                 android:contentDescription="Bus" />
 
-            <TextView
-                android:id="@+id/tvDistance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="10sp"
-                android:textColor="@android:color/darker_gray"
-                app:layout_constraintTop_toBottomOf="@id/iconBus"
-                app:layout_constraintStart_toStartOf="@id/iconBus"
-                app:layout_constraintEnd_toEndOf="@id/iconBus"
-                tools:text="12 km" />
-
             <View
                 android:layout_width="0dp"
-                android:layout_height="2dp"
+                android:layout_height="6dp"
                 android:background="@drawable/shape_dashed_line"
                 app:layout_constraintStart_toEndOf="@id/iconBus"
                 app:layout_constraintEnd_toStartOf="@id/dotDestination"
@@ -215,8 +204,7 @@
                 android:background="@drawable/shape_dot"
                 app:layout_constraintBottom_toBottomOf="@id/tvDestinationCity"
                 app:layout_constraintTop_toTopOf="@id/tvDestinationCity"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tvDestinationCity"
                 app:layout_constraintHorizontal_bias="0.75" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,14 +8,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class DashboardInvoiceFragment : Fragment() {
+class DashboardTicketFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_invoice_dashboard, container, false)
+        return inflater.inflate(R.layout.fragment_ticket_dashboard, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -25,10 +25,10 @@ class DashboardInvoiceFragment : Fragment() {
         val invoiceList = createSampleInvoiceList()
 
         // 2. Cari RecyclerView
-        val recyclerView = view.findViewById<RecyclerView>(R.id.containerRecycleViewListInvoice)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.containerRecycleViewListTicket)
 
         // 3. Inisialisasi Adapter
-        val invoiceAdapter = InvoiceAdapter(invoiceList) { selectedTicket ->
+        val invoiceAdapter = TicketAdapter(invoiceList) { selectedTicket ->
             // --- Logic jika item invoice diklik ---
             // Contoh navigasi:
             // val action = InvoiceFragmentDirections.actionToInvoiceDetail(selectedTicket)
@@ -44,49 +44,43 @@ class DashboardInvoiceFragment : Fragment() {
     private fun createSampleInvoiceList(): List<Ticket> {
         return listOf(
             Ticket(
-                routeTitle = "Kuningan → Jakarta",
+                busName = "Bintang Malam",
                 detailActionText = "Detail",
                 departureDate = "12 Jan 2025",
 
                 originCity = "Kuningan",
-                originTerminal = "Terminal Kuningan",
+                originTerminal = "Terminal Kertawangunan",
                 departureTime = "07:00",
 
                 destinationCity = "Jakarta",
                 destinationTerminal = "Kp Rambutan",
                 arrivalTime = "12:30",
-
-                distanceKm = "251 KM"
             ),
             Ticket(
-                routeTitle = "Cirebon → Bandung",
+                busName = "Patas Cikolkol",
                 detailActionText = "Detail",
                 departureDate = "14 Jan 2025",
 
-                originCity = "Cirebon",
-                originTerminal = "Harjamukti",
+                originCity = "Kuningan",
+                originTerminal = "Terminal Kertawangunan",
                 departureTime = "08:00",
 
-                destinationCity = "Bandung",
-                destinationTerminal = "Cicaheum",
+                destinationCity = "Tanggerang",
+                destinationTerminal = "Terminal Mandala",
                 arrivalTime = "11:20",
-
-                distanceKm = "134 KM"
             ),
             Ticket(
-                routeTitle = "Kuningan → Bogor",
+                busName = "Raka Logis Bangor",
                 detailActionText = "Detail",
                 departureDate = "15 Jan 2025",
 
                 originCity = "Kuningan",
-                originTerminal = "Terminal Kuningan",
+                originTerminal = "Terminal Kertawangunan",
                 departureTime = "05:30",
 
                 destinationCity = "Bogor",
                 destinationTerminal = "Baranangsiang",
                 arrivalTime = "10:45",
-
-                distanceKm = "210 KM"
             )
         )
     }

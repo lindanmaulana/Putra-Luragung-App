@@ -1,5 +1,6 @@
 package com.pab.putraluragungtrans
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.ViewGroup
 import androidx.activity.enableEdgeToEdge
@@ -13,10 +14,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class Dashboard : AppCompatActivity(), NavigationCallbackDashboard {
     private lateinit var bottomNav: BottomNavigationView
     private val homeFragment: DashboardHomeFragment = DashboardHomeFragment()
-    private val searchFragment: DashboardSearchFragment = DashboardSearchFragment()
+    private val busFragment: DashboardBusFragment = DashboardBusFragment()
 
-    private val invoiceFragment: DashboardInvoiceFragment = DashboardInvoiceFragment()
-    private val profileFragment: DashboardProfileFragment = DashboardProfileFragment()
+    private val ticketFragment: DashboardTicketFragment = DashboardTicketFragment()
+    private val accountFragment: DashboardAccountFragment = DashboardAccountFragment()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,15 +42,16 @@ class Dashboard : AppCompatActivity(), NavigationCallbackDashboard {
         bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> replaceFragment(homeFragment)
-                R.id.nav_search -> replaceFragment(searchFragment)
-                R.id.nav_invoice -> replaceFragment(invoiceFragment)
-                R.id.nav_profile -> replaceFragment(profileFragment)
+                R.id.nav_bus -> replaceFragment(busFragment)
+                R.id.nav_ticket -> replaceFragment(ticketFragment)
+                R.id.nav_account -> replaceFragment(accountFragment)
 
                 // Item placeholder tidak perlu ditangani karena disetel 'enabled="false"'
             }
             true
         }
 
+        handleIntent(intent)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -57,18 +59,43 @@ class Dashboard : AppCompatActivity(), NavigationCallbackDashboard {
         }
     }
 
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        handleIntent(intent)
+    }
+
     override fun navigateTo(itemId: Int) {
         when(itemId) {
-            R.id.nav_home -> replaceFragment(homeFragment)
-            R.id.nav_search -> {
-                // Saat tombol diklik, ganti Fragment
-                replaceFragment(searchFragment)
-
-                // Opsional: Setel item Bottom Nav Bar yang sesuai menjadi terpilih
-                bottomNav.selectedItemId = R.id.nav_search
+            R.id.nav_home -> {
+                replaceFragment(homeFragment)
+                bottomNav.selectedItemId = R.id.nav_home
             }
-//            R.id.nav_invoice -> replaceFragment(invoiceFragment)
-//            R.id.nav_profile -> replaceFragment(profileFragment)
+            R.id.nav_bus -> {
+                replaceFragment(busFragment)
+                bottomNav.selectedItemId = R.id.nav_bus
+            }
+            R.id.nav_ticket -> {
+                replaceFragment(ticketFragment)
+                bottomNav.selectedItemId = R.id.nav_ticket
+            }
+            R.id.nav_account -> {
+                replaceFragment(accountFragment)
+                bottomNav.selectedItemId = R.id.nav_account
+            }
+
+            else -> {
+                replaceFragment(homeFragment)
+                bottomNav.selectedItemId = R.id.nav_home
+            }
+        }
+    }
+
+    private fun handleIntent(intent: Intent?) {
+        val targetMenuId = intent?.getIntExtra("TARGET_MENU_ID", -1) ?: -1
+
+        if (targetMenuId != -1) {
+            navigateTo(targetMenuId)
         }
     }
 

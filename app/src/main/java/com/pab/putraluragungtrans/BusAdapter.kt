@@ -1,5 +1,6 @@
 package com.pab.putraluragungtrans
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +22,7 @@ class BusAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BusViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.activity_list_bus, parent, false)
+            .inflate(R.layout.activity_bus_list, parent, false)
         return BusViewHolder(view)
     }
 
@@ -35,7 +36,10 @@ class BusAdapter(
         holder.imageBus.setImageResource(currentBus.ImageUrl)
 
         holder.itemView.setOnClickListener {
-            clickListener(currentBus)
+            val context = it.context
+            val intent = Intent(context, BusDetailActivity::class.java)
+            intent.putExtra("EXTRA_BUS", busList[position])
+            context.startActivity(intent)
         }
     }
 

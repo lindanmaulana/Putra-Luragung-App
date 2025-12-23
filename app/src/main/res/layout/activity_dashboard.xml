@@ -24,10 +24,10 @@
         app:itemTextColor="@color/selector_nav"
         app:itemRippleColor="@android:color/transparent"
         app:itemActiveIndicatorStyle="@style/App.Custom.BottomNavIndicator"
-        app:menu="@menu/navbar_menu" />
+        app:menu="@menu/bottom_menu" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_qr_code"
+        android:id="@+id/actionQrCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"

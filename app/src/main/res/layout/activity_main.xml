@@ -8,62 +8,136 @@
     android:background="@drawable/gradient_blue_white"
     tools:context=".MainActivity">
 
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="12dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeWidth="0dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card_ornament"
+            android:padding="16dp">
+            <ImageView
+                android:id="@+id/logoBus"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/bus_ajimut"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/logoBus"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Putra Luragung Trans"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kenyamanan Perjalanan Anda"
+                    android:textColor="#CCFFFFFF"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/mainImage"
+        android:layout_width="match_parent"
+        android:layout_height="520dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/bus_sataro"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="-40dp"
+        app:contentPadding="0dp"
+        app:cardPreventCornerOverlap="false"
+        app:layout_constraintTop_toBottomOf="@id/mainImage"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardBackgroundColor="@color/bg_primary"
+        app:cardElevation="8dp"
+        app:strokeColor="@color/bg_primary"
+        app:shapeAppearanceOverlay="@style/TopRoundedCornerCard2">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mainContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="30dp"
+        android:background="@drawable/bg_card_ornament"
+        android:padding="20dp"
         tools:context=".MainActivity">
 
-        <ImageView
-            android:id="@+id/mainHeroImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/bus_1"
-            android:layout_marginBottom="200dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
         <TextView
             android:id="@+id/mainHeroTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="We're\ngoing\non a trip"
-            android:textAlignment="textStart"
-            android:textSize="50sp"
+            android:text="Pesan Tiket \nBus Sekarang"
+            android:textAlignment="center"
+            android:textSize="36sp"
             android:textStyle="bold"
-            android:textColor="@color/bg_primary"
+            android:textColor="@color/white"
+            android:textAllCaps="true"
+            android:layout_marginTop="40dp"
             android:layout_marginBottom="10dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/mainHeroDesc" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/mainHeroDesc"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Are you in?."
-            android:textAlignment="textStart"
+            android:text="Cari rute terbaik dan pesan tiket\nbus dengan mudah, cepat, dan aman."
+            android:textAlignment="center"
             android:textSize="16sp"
             android:textStyle="normal"
-            android:textColor="@color/bg_primary"
-            android:layout_marginBottom="40dp"
+            android:textColor="@color/white"
+            android:layout_marginBottom="10dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/btnStarted" />
+            app:layout_constraintTop_toBottomOf="@+id/mainHeroTitle" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnStarted"
+            style="@style/btnPrimary"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:backgroundTint="@color/bg_primary"
-            android:text="Get Started"
-            android:textSize="16sp"
-            android:layout_marginBottom="10dp"
+            android:layout_height="60dp"
+            android:textColor="@color/bg_primary"
+            android:backgroundTint="@color/white"
+            android:layout_marginBottom="16dp"
+            android:text="Mulai"
+            app:strokeColor="@color/white"
+
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:cornerRadius="8dp"/>
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

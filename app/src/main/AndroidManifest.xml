@@ -12,22 +12,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PutraLuragungTrans">
         <activity
-            android:name=".InvoiceList"
+            android:name=".BusSearchActivity"
             android:exported="false" />
         <activity
-            android:name=".BusList"
+            android:name=".AccountProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BookingStruckActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BookingChooseSeatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TicketDetail"
+            android:exported="false" />
+        <activity
+            android:name=".BusDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TicketList"
+            android:exported="false" />
+        <activity
+            android:name=".BusListActivity"
             android:exported="false" />
         <activity
             android:name=".Onboarding"
-            android:exported="false" />
-        <activity
-            android:name=".OnboardingPageFragment"
-            android:exported="false" />
-        <activity
-            android:name=".OnboardingSecondScreen"
-            android:exported="false" />
-        <activity
-            android:name=".OnboardingFirstScreen"
             android:exported="false" />
         <activity
             android:name=".Dashboard"

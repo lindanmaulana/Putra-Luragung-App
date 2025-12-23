@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:paddingVertical="32dp"
         android:layout_marginHorizontal="20dp"
-        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -44,96 +44,181 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
-        style="@style/CustomContainerWhite"
         android:id="@+id/bodySignup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center"
         android:layout_marginTop="40dp"
         android:layout_marginHorizontal="20dp"
+        android:padding="16dp"
+        android:background="@drawable/bg_card_ornament"
+        app:layout_constraintTop_toBottomOf="@id/headerSignup"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/headerSignup">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/headerSignup">
-            <EditText
-                style="@style/CustomEditText"
-                android:id="@+id/inputFirstName"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:hint="Nama Depan"
-                android:layout_marginBottom="10dp"
-                android:layout_marginRight="10dp"
-                android:inputType="text" />
+            android:layout_marginBottom="10dp"
+            android:baselineAligned="false">
 
-            <EditText
-                style="@style/CustomEditText"
-                android:id="@+id/inputLastName"
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="Nama Belakang"
-                android:inputType="text" />
+                android:layout_marginEnd="10dp"
+                app:hintEnabled="false">
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/CustomEditText"
+                    android:id="@+id/inputFirstName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nama Depan"
+                    android:inputType="textCapWords"
+                    android:imeOptions="actionNext"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:hintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/CustomEditText"
+                    android:id="@+id/inputLastName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nama Belakang"
+                    android:inputType="textCapWords"
+                    android:imeOptions="actionNext" />
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
-        <EditText
-            style="@style/CustomEditText"
-            android:id="@+id/inputPhoneNumber"
-            android:hint="Nomor Ponsel"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:inputType="phone" />
+            app:hintEnabled="false"
+            app:prefixText="+62 "
+            app:prefixTextColor="@color/bg_primary">
 
-        <EditText
-            style="@style/CustomEditText"
-            android:id="@+id/inputNIK"
-            android:hint="NIK"
-            android:layout_marginBottom="10dp"
-            android:inputType="text" />
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/CustomEditText"
+                android:id="@+id/inputPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nomor Ponsel"
+                android:inputType="phone"
+                android:imeOptions="actionNext" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            style="@style/CustomEditText"
-            android:id="@+id/inputAddress"
-            android:hint="Alamat Lengkap"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:inputType="textMultiLine" />
+            app:hintEnabled="false">
 
-        <EditText
-            style="@style/CustomEditText"
-            android:id="@+id/inputEmail"
-            android:hint="Email"
-            android:layout_marginBottom="10dp"
-            android:inputType="textEmailAddress" />
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/CustomEditText"
+                android:id="@+id/inputNIK"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="NIK"
+                android:inputType="number"
+                android:maxLength="16"
+                android:imeOptions="actionNext" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            style="@style/CustomEditText"
-            android:id="@+id/inputPassword"
-            android:hint="Password"
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:inputType="textPassword" />
+            app:hintEnabled="false">
 
-        <EditText
-            style="@style/CustomEditText"
-            android:id="@+id/inputConfirmPassword"
-            android:hint="Konfirmasi Password"
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/CustomEditText"
+                android:id="@+id/inputAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Alamat Lengkap"
+                android:inputType="textMultiLine"
+                android:gravity="top"
+                android:minLines="3"
+                android:imeOptions="actionNext" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:inputType="textPassword" />
+            app:hintEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/CustomEditText"
+                android:id="@+id/inputEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:imeOptions="actionNext"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            app:hintEnabled="false"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/CustomEditText"
+                android:id="@+id/inputPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:imeOptions="actionNext" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            app:hintEnabled="false"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/CustomEditText"
+                android:id="@+id/inputConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Konfirmasi Password"
+                android:inputType="textPassword"
+                android:imeOptions="actionDone" />
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
-
     <com.google.android.material.button.MaterialButton
-        style="@style/btnAuth"
         android:id="@+id/actionRegister"
-        android:text="Daftar"
+        style="@style/btnPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:layout_marginTop="20dp"
         android:layout_marginHorizontal="20dp"
-        app:cornerRadius="8dp"
+        android:textColor="@color/bg_primary"
+        android:backgroundTint="@color/white"
+        android:layout_marginBottom="16dp"
+        android:text="Daftar"
+        app:strokeColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bodySignup"/>

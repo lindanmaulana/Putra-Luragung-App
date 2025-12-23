@@ -1,73 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/signinAuth"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_blue_white"
-    tools:context=".DashboardHomeFragment">
+    android:background="@color/white"
+    tools:context=".SigninAuth">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        app:cardBackgroundColor="@color/white"
-        app:cardElevation="4dp"
+        app:cardBackgroundColor="@color/bg_primary"
+        app:cardElevation="8dp"
         app:shapeAppearanceOverlay="@style/BottomRoundedCornerCard"
-
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center">
+            android:padding="24dp"
+            android:background="@color/bg_primary">
 
             <TextView
-                android:id="@+id/titleProfile"
+                android:id="@+id/text_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:textSize="24sp"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/signinHeaderDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Profile"
-                android:textColor="@color/bg_primary"
-                android:textStyle="bold"
-                android:textSize="22sp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                android:text="Selamat Datang di LuragungTransApp"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:textStyle="normal" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/mainImage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/bus_montel"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        app:cardBackgroundColor="@color/bg_primary"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:shapeAppearanceOverlay="@style/TopRoundedCornerCard">
+
+        <LinearLayout
+            android:id="@+id/formSignin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="34dp"
+            android:translationY="1000dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:gravity="center"
-                android:layout_marginTop="40dp"
-                app:layout_constraintTop_toBottomOf="@id/titleProfile"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp">
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:scaleType="centerCrop"
-                    android:layout_marginBottom="6dp"
-                    app:srcCompat="@drawable/profile"
-                    app:strokeWidth="2dp"
-                    app:strokeColor="@color/bg_primary"/>
+                <EditText
+                    style="@style/CustomEditText"
+                    android:id="@+id/input_email"
+                    android:hint="Email"
+                    android:layout_marginBottom="5dp"
+                    android:inputType="textEmailAddress" />
 
+                <EditText
+                    style="@style/CustomEditText"
+                    android:id="@+id/input_password"
+                    android:hint="Password"
+                    android:inputType="textPassword" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/btnAuth"
+                android:id="@+id/actionSignin"
+                android:text="Masuk"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"
+                android:textColor="@color/bg_primary"
+                app:cornerRadius="8dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center">
                 <TextView
+                    android:id="@+id/text_register"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dian Ardiansyah "
-                    android:textStyle="bold"
-                    android:textSize="24sp"/>
+                    android:layout_gravity="center_horizontal"
+                    android:text="Tidak memiliki akun?"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:paddingBottom="16dp"
+                    android:layout_marginRight="4dp"/>
 
+                <TextView
+                    android:id="@+id/actionToRegister"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
+
+                    android:text="Daftar"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:paddingBottom="16dp" />
             </LinearLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
 

@@ -33,10 +33,8 @@ class OnboardingPageFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Asumsi layout Anda bernama fragment_onboarding_page.xml
         val view = inflater.inflate(R.layout.activity_onboarding_page_fragment, container, false)
 
-        // Ambil data dari arguments
         view.findViewById<TextView>(R.id.titleBody).text = arguments?.getString(ARG_TITLE)
         view.findViewById<TextView>(R.id.titleSessionBody).text = arguments?.getString(ARG_TITLE_SESSION)
         view.findViewById<TextView>(R.id.descBody).text = arguments?.getString(ARG_DESC)

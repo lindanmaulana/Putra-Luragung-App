@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/home_icon"
+        android:title="Beranda" />
+
+    <item
+        android:id="@+id/nav_bus"
+        android:icon="@drawable/search_icon"
+        android:title="Bus" />
+
+    <item
+        android:id="@+id/nav_placeholder"
+        android:title=""
+        app:itemIconTint="@android:color/transparent"
+        app:labelVisibilityMode="unlabeled"
+        android:enabled="false" />
+
+    <item
+        android:id="@+id/nav_ticket"
+        android:icon="@drawable/invoice_icon"
+        android:title="Faktur" />
+
+    <item
+        android:id="@+id/nav_account"
+        android:icon="@drawable/profile2_icon"
+        android:title="Account" />
+</menu>

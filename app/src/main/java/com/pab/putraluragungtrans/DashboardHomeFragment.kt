@@ -1,12 +1,14 @@
 package com.pab.putraluragungtrans
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 
 class DashboardHomeFragment : Fragment() {
     private lateinit var callback: NavigationCallbackDashboard
@@ -32,10 +34,17 @@ class DashboardHomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val actionSearch = view.findViewById<EditText>(R.id.actionSearch)
         val actionToAllBus: Button = view.findViewById(R.id.actionToAllBus)
 
+        actionSearch.setOnClickListener {
+            val intent = Intent(requireActivity(), BusSearchActivity::class.java)
+
+            startActivity(intent)
+        }
+
         actionToAllBus.setOnClickListener {
-            callback.navigateTo(R.id.nav_search)
+            callback.navigateTo(R.id.nav_bus)
         }
     }
 }

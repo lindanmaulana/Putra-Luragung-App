@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Ticket(
-    val routeTitle: String,
+    val busName: String,
     val detailActionText: String,
     val departureDate: String,
 
@@ -16,6 +16,4 @@ data class Ticket(
     val destinationCity: String,
     val destinationTerminal: String,
     val arrivalTime: String,
-
-    val distanceKm: String
 ) : Parcelable

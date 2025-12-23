@@ -1,19 +1,21 @@
 package com.pab.putraluragungtrans
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.pab.putraluragungtrans.BusAdapter.BusViewHolder
 
-class InvoiceAdapter(
-    private val listTicket: List<Ticket>,
+class TicketAdapter(
+    private val ticketList: List<Ticket>,
     private val clickListener: (Ticket) -> Unit
-) : RecyclerView.Adapter<InvoiceAdapter.InvoiceViewHolder>() {
+) : RecyclerView.Adapter<TicketAdapter.TicketViewHolder>() {
 
-    class InvoiceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class TicketViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val tvRouteTitle: TextView = itemView.findViewById(R.id.tvRouteTitle)
+        val tvBusName: TextView = itemView.findViewById(R.id.tvBusName)
         val tvDetailAction: TextView = itemView.findViewById(R.id.tvDetailAction)
         val tvDepartureDate: TextView = itemView.findViewById(R.id.tvDepartureDate)
 
@@ -24,20 +26,19 @@ class InvoiceAdapter(
         val tvDestinationCity: TextView = itemView.findViewById(R.id.tvDestinationCity)
         val tvDestinationTerminal: TextView = itemView.findViewById(R.id.tvDestinationTerminal)
         val tvArrivalTime: TextView = itemView.findViewById(R.id.tvArrivalTime)
-
-        val tvDistance: TextView = itemView.findViewById(R.id.tvDistance)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InvoiceViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TicketViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.activity_list_invoice, parent, false)
-        return InvoiceViewHolder(view)
+            .inflate(R.layout.activity_ticket_list, parent, false)
+        return TicketViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: InvoiceViewHolder, position: Int) {
-        val item = listTicket[position]
 
-        holder.tvRouteTitle.text = item.routeTitle
+    override fun onBindViewHolder(holder: TicketViewHolder, position: Int) {
+        val item = ticketList[position]
+
+        holder.tvBusName.text = item.busName
         holder.tvDetailAction.text = item.detailActionText
         holder.tvDepartureDate.text = item.departureDate
 
@@ -49,20 +50,17 @@ class InvoiceAdapter(
         holder.tvDestinationTerminal.text = item.destinationTerminal
         holder.tvArrivalTime.text = item.arrivalTime
 
-        holder.tvDistance.text = item.distanceKm
-
-        // Klik item
         holder.itemView.setOnClickListener {
-            clickListener(item)
-        }
+            val context = it.context
+            val intent = Intent(context, TicketDetail::class.java)
+            intent.putExtra("EXTRA_TICKET", ticketList[position])
+            context.startActivity(intent)
 
-        // Klik tombol detail
-        holder.tvDetailAction.setOnClickListener {
             clickListener(item)
         }
     }
 
     override fun getItemCount(): Int {
-        return listTicket.size
+        return ticketList.size
     }
 }

@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.googleDevtoolsKsp)
     id("org.jetbrains.kotlin.plugin.parcelize")
 }
 
@@ -27,6 +28,7 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -47,4 +49,9 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation("androidx.viewpager2:viewpager2:1.1.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
+
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    ksp("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
 }

@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:background="@drawable/gradient_blue_white"
     tools:context=".SuccessSignup">
 
     <ImageView
@@ -18,10 +19,11 @@
         android:id="@+id/titleSuccess"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Congratulations!"
-        android:textSize="20sp"
+        android:text="Selamat!"
+        android:textSize="24sp"
         android:textStyle="bold"
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:layout_marginBottom="14dp"/>
     <TextView
         android:id="@+id/descSuccess"
@@ -29,27 +31,29 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textColor="@color/bg_primary"
-        android:text="We've sent you a verification email, please check your inbox and follow the instructions to verify your account."
+        android:textSize="18sp"
+        android:text="Kami telah mengirimkan email verifikasi kepada Anda, silakan periksa kotak masuk Anda dan ikuti petunjuk untuk memverifikasi akun Anda."
         android:layout_marginBottom="10dp"/>
 
     <TextView
         android:id="@+id/expressionSuccess"
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textColor="@color/bg_primary"
-        android:text="Thank you for signing up with us!"
+        android:textSize="16sp"
+        android:text="Terima kasih telah mendaftar bersama kami!"
         />
 
     <com.google.android.material.button.MaterialButton
         style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:id="@+id/actionToSigninSuccess"
+        android:id="@+id/actionToSignin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign in here"
+        android:text="Lanjutkan untuk Login"
         android:textAllCaps="false"
         android:textColor="@color/bg_primary"
         android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        />
+        android:textSize="16sp"
+        android:layout_marginTop="10dp" />
 </LinearLayout>
