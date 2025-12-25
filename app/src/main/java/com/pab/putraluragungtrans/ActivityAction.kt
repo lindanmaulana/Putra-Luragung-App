@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 
 
 open class BaseActivity: AppCompatActivity() {
-    fun navigateTo(destination: Class<*>, targetMenuId: Int? = null) {
+    fun navigateTo(destination: Class<*>, targetMenuId: Int? = null, isFinal: Boolean = false) {
         val intent = Intent(this, destination)
 
         val options = ActivityOptions.makeCustomAnimation(
@@ -15,14 +15,23 @@ open class BaseActivity: AppCompatActivity() {
             android.R.anim.fade_out
         )
 
-        if (destination.name.contains("Dashboard")) {
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-            targetMenuId?.let { intent.putExtra("TARGET_MENU_ID", it) }
+        when {
+            isFinal -> {
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            }
+
+            destination.name.contains("Dashboard") -> {
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            }
+        }
+
+        targetMenuId?.let {
+            intent.putExtra("TARGET_MENU_ID", it)
         }
 
         startActivity(intent, options.toBundle())
+        if (isFinal) finishAffinity()
     }
-
 
     fun replaceFragmentDashboard(containerId: Int, fragment: Fragment) {
         supportFragmentManager.beginTransaction()

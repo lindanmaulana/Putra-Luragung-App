@@ -29,7 +29,7 @@ class LoadingScreen : AppCompatActivity() {
                 }
 
                 else -> {
-                    navigateTo(Onboarding::class.java)
+                    navigateTo(MainActivity::class.java)
                 }
             }
         }
