@@ -503,7 +503,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="SHD - Ekonomi"/>
+                                android:text="Pratama"/>
                         </LinearLayout>
 
                         <LinearLayout
@@ -519,7 +519,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="SHD - Ekonomi"/>
+                                android:text="Bintang Malam"/>
                         </LinearLayout>
 
                         <LinearLayout
@@ -535,7 +535,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="SHD - Ekonomi"/>
+                                android:text="Patas Cikolkol"/>
                         </LinearLayout>
 
                     </LinearLayout>

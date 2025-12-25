@@ -7,17 +7,16 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.button.MaterialButton
 
-class BookingStatusActivity : BaseActivity() {
+class TicketStruckActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_booking_status)
+        setContentView(R.layout.activity_ticket_struck)
 
         val actionBack = findViewById<MaterialButton>(R.id.actionBack)
-        val actionShare = findViewById<MaterialButton>(R.id.actionShare)
 
         actionBack.setOnClickListener {
-            navigateTo(Dashboard::class.java, R.id.nav_home)
+            navigateTo(Dashboard::class.java, R.id.nav_ticket)
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->

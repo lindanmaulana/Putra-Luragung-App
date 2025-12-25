@@ -39,7 +39,6 @@ class TicketAdapter(
         val item = ticketList[position]
 
         holder.tvBusName.text = item.busName
-        holder.tvDetailAction.text = item.detailActionText
         holder.tvDepartureDate.text = item.departureDate
 
         holder.tvOriginCity.text = item.originCity

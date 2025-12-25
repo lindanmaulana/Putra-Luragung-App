@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PutraLuragungTrans">
         <activity
+            android:name=".TicketStruckActivity"
+            android:exported="false" />
+        <activity
             android:name=".AccountChangePasswordSuccessActivity"
             android:exported="false" />
         <activity

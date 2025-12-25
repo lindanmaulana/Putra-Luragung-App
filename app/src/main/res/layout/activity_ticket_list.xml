@@ -156,25 +156,6 @@
                 app:layout_constraintTop_toBottomOf="@id/tvDestinationTerminal"
                 tools:text="7 : 00 pm" />
 
-            <View
-                android:id="@+id/dotOrigin"
-                android:layout_width="8dp"
-                android:layout_height="8dp"
-                android:background="@drawable/shape_dot"
-                app:layout_constraintBottom_toBottomOf="@id/tvOriginCity"
-                app:layout_constraintTop_toTopOf="@id/tvOriginCity"
-                app:layout_constraintStart_toEndOf="@id/tvOriginCity"
-                app:layout_constraintHorizontal_bias="0.25" />
-            <View
-                android:layout_width="0dp"
-                android:layout_height="6dp"
-                android:background="@drawable/shape_dashed_line"
-                app:layout_constraintStart_toEndOf="@id/dotOrigin"
-                app:layout_constraintEnd_toStartOf="@id/iconBus"
-                app:layout_constraintTop_toTopOf="@id/dotOrigin"
-                app:layout_constraintBottom_toBottomOf="@id/dotOrigin"
-                android:layout_marginStart="4dp"
-                android:layerType="software" />
             <ImageView
                 android:id="@+id/iconBus"
                 android:layout_width="32dp"
@@ -185,27 +166,6 @@
                 app:layout_constraintTop_toTopOf="@id/tvOriginCity"
                 app:layout_constraintBottom_toBottomOf="@id/tvOriginCity"
                 android:contentDescription="Bus" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="6dp"
-                android:background="@drawable/shape_dashed_line"
-                app:layout_constraintStart_toEndOf="@id/iconBus"
-                app:layout_constraintEnd_toStartOf="@id/dotDestination"
-                app:layout_constraintTop_toTopOf="@id/dotDestination"
-                app:layout_constraintBottom_toBottomOf="@id/dotDestination"
-                android:layout_marginEnd="4dp"
-                android:layerType="software" />
-
-            <View
-                android:id="@+id/dotDestination"
-                android:layout_width="8dp"
-                android:layout_height="8dp"
-                android:background="@drawable/shape_dot"
-                app:layout_constraintBottom_toBottomOf="@id/tvDestinationCity"
-                app:layout_constraintTop_toTopOf="@id/tvDestinationCity"
-                app:layout_constraintEnd_toStartOf="@id/tvDestinationCity"
-                app:layout_constraintHorizontal_bias="0.75" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

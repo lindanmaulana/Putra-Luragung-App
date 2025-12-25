@@ -9,8 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.IntentCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.imageview.ShapeableImageView
 
-class TicketDetail : AppCompatActivity() {
+class TicketDetail : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -18,9 +19,9 @@ class TicketDetail : AppCompatActivity() {
 
         val actionBack = findViewById<Button>(R.id.actionBack)
         val dataDetail = IntentCompat.getParcelableExtra(intent, "EXTRA_TICKET", Ticket::class.java)
+        val actionStruck = findViewById<ShapeableImageView>(R.id.actionStruck)
 
         val tvBusName: TextView = findViewById(R.id.tvBusName)
-        val tvDetailAction: TextView = findViewById(R.id.tvDetailAction)
         val tvDepartureDate: TextView = findViewById(R.id.tvDepartureDate)
 
         val tvOriginCity: TextView = findViewById(R.id.tvOriginCity)
@@ -33,7 +34,6 @@ class TicketDetail : AppCompatActivity() {
 
         dataDetail?.let {
             tvBusName.text = it.busName
-            tvDetailAction.text = it.detailActionText
             tvDepartureDate.text = it.departureDate
             tvOriginCity.text = it.originCity
             tvOriginTerminal.text = it.originTerminal
@@ -43,14 +43,12 @@ class TicketDetail : AppCompatActivity() {
             tvArrivalTime.text = it.arrivalTime
         }
 
+        actionStruck.setOnClickListener {
+            navigateTo(TicketStruckActivity::class.java)
+        }
+
         actionBack.setOnClickListener {
-            val intent = Intent(this, Dashboard::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-
-            intent.putExtra("TARGET_MENU_ID", R.id.nav_ticket)
-
-            startActivity(intent)
-            finish()
+            navigateTo(Dashboard::class.java, R.id.nav_ticket)
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->

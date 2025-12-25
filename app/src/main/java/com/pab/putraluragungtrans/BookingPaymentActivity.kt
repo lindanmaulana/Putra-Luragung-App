@@ -17,7 +17,7 @@ class BookingPaymentActivity : BaseActivity() {
         val actionBack = findViewById<MaterialButton>(R.id.actionBack)
 
         actionCheckStatus.setOnClickListener {
-            navigateTo(BookingStatusActivity::class.java)
+            navigateTo(TicketStruckActivity::class.java)
         }
 
         actionBack.setOnClickListener {

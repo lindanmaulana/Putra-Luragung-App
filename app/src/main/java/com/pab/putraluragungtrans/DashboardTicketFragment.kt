@@ -45,7 +45,6 @@ class DashboardTicketFragment : Fragment() {
         return listOf(
             Ticket(
                 busName = "Bintang Malam",
-                detailActionText = "Detail",
                 departureDate = "12 Jan 2025",
 
                 originCity = "Kuningan",
@@ -58,7 +57,6 @@ class DashboardTicketFragment : Fragment() {
             ),
             Ticket(
                 busName = "Patas Cikolkol",
-                detailActionText = "Detail",
                 departureDate = "14 Jan 2025",
 
                 originCity = "Kuningan",
@@ -71,7 +69,6 @@ class DashboardTicketFragment : Fragment() {
             ),
             Ticket(
                 busName = "Raka Logis Bangor",
-                detailActionText = "Detail",
                 departureDate = "15 Jan 2025",
 
                 originCity = "Kuningan",

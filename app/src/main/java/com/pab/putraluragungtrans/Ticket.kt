@@ -6,7 +6,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Ticket(
     val busName: String,
-    val detailActionText: String,
     val departureDate: String,
 
     val originCity: String,

@@ -60,20 +60,18 @@
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/tvDetailAction"
-                        tools:text="Bus Patas Cikokol - Executive" />
+                        tools:text="Patas Cikolkol" />
 
-                    <TextView
-                        android:id="@+id/tvDetailAction"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/actionStruck"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:clickable="true"
+                        android:focusable="true"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        tools:text="C2" />
+                        app:srcCompat="@drawable/invoice2_icon"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <LinearLayout
