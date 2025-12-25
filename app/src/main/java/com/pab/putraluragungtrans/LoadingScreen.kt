@@ -11,7 +11,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class LoadingScreen : AppCompatActivity() {
-    private val SPLASH_TIME_LOAD: Long = 2000
+    private val SPLASH_TIME_LOAD: Long = 1000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,19 +23,15 @@ class LoadingScreen : AppCompatActivity() {
         lifecycleScope.launch {
             delay(SPLASH_TIME_LOAD)
 
-            val intent = when {
+            when {
                 session.isLoggedIn() -> {
-                    Intent(this@LoadingScreen, Dashboard::class.java).apply {
-                        flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-                        putExtra("TARGET_MENU_ID", R.id.nav_home)
-                    }
+                    navigateTo(Dashboard::class.java, R.id.nav_home)
                 }
 
-                else -> Intent(this@LoadingScreen, MainActivity::class.java)
+                else -> {
+                    navigateTo(Onboarding::class.java)
+                }
             }
-
-            startActivity(intent)
-            finish()
         }
     }
 }

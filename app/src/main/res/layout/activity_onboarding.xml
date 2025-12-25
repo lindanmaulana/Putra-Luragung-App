@@ -52,6 +52,24 @@
         app:layout_constraintTop_toBottomOf="@id/actionTopWrapper"
         app:layout_constraintBottom_toTopOf="@id/actionNext" />
 
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tablayout"
+        android:layout_width="56dp"
+        android:layout_height="24dp"
+        android:layout_gravity="center"
+        android:background="@android:color/transparent"
+        app:tabBackground="@drawable/tab_selector"
+        app:tabIndicatorHeight="0dp"
+        app:tabRippleColor="@android:color/transparent"
+
+        app:tabPaddingStart="6dp"
+        app:tabPaddingEnd="6dp"
+
+        app:layout_constraintBottom_toTopOf="@id/actionNext"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="24dp"/>
+
     <com.google.android.material.button.MaterialButton
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:id="@+id/actionNext"

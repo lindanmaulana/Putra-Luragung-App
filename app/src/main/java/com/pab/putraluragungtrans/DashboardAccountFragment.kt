@@ -20,13 +20,14 @@ class DashboardAccountFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val actionProfileAccount = view.findViewById<View>(R.id.actionProfileAccount)
+        val actionChangePassword = view.findViewById<View>(R.id.actionChangePassword)
         val actionLogout = view.findViewById<View>(R.id.actionLogout)
 
-        actionProfileAccount.setOnClickListener {
-            val intent = Intent(requireActivity(), AccountProfileActivity::class.java)
+        actionProfileAccount.setOnClickListener {(requireActivity() as BaseActivity).navigateTo(
+            AccountProfileActivity::class.java)}
 
-            startActivity(intent)
-        }
+        actionChangePassword.setOnClickListener {
+            (requireActivity() as BaseActivity).navigateTo(AccountChangePasswordActivity::class.java)}
 
         actionLogout.setOnClickListener {
             val session = SessionManager(requireContext())

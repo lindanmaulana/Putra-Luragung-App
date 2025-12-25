@@ -50,7 +50,7 @@ class BookingChooseSeatActivity : AppCompatActivity() {
         actionChooseSeatNext.setOnClickListener {
             try {
                 if (selectedSeatData != null) {
-                    val intent = Intent(this, BookingStruckActivity::class.java)
+                    val intent = Intent(this, BookingCheckoutActivity::class.java)
                     intent.putExtra("DATA_SELECTED_SEAT", selectedSeatData)
 //                    intent.putExtra("DATA_SELECTED_BUS", dataDetailBus)
                     startActivity(intent)

@@ -14,16 +14,14 @@ class OnboardingPageFragment : Fragment() {
         private const val ARG_TITLE_SESSION = "Title Session"
         private const val ARG_DESC = "description"
         private const val ARG_IMAGE = "image"
-        private const val ARG_IMAGE_SESSION = "image session"
 
-        fun newInstance(title: String, titleSession: String, description: String, imageResId: Int, imageSessionResId: Int): OnboardingPageFragment {
+        fun newInstance(title: String, titleSession: String, description: String, imageResId: Int): OnboardingPageFragment {
             val fragment = OnboardingPageFragment()
             val args = Bundle()
             args.putString(ARG_TITLE, title)
             args.putString(ARG_TITLE_SESSION, titleSession)
             args.putString(ARG_DESC, description)
             args.putInt(ARG_IMAGE, imageResId)
-            args.putInt(ARG_IMAGE_SESSION, imageSessionResId)
             fragment.arguments = args
             return fragment
         }
@@ -39,7 +37,6 @@ class OnboardingPageFragment : Fragment() {
         view.findViewById<TextView>(R.id.titleSessionBody).text = arguments?.getString(ARG_TITLE_SESSION)
         view.findViewById<TextView>(R.id.descBody).text = arguments?.getString(ARG_DESC)
         view.findViewById<ImageView>(R.id.imageBody).setImageResource(arguments?.getInt(ARG_IMAGE) ?: 0)
-        view.findViewById<ImageView>(R.id.imageSessionBody).setImageResource(arguments?.getInt(ARG_IMAGE_SESSION) ?: 0)
 
         return view
     }

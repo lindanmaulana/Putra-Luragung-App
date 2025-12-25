@@ -12,6 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PutraLuragungTrans">
         <activity
+            android:name=".BookingStatusActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BookingPaymentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BookingCheckoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AccountChangePasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".BusSearchActivity"
             android:exported="false" />
         <activity

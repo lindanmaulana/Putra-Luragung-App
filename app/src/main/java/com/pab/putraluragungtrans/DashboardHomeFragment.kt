@@ -9,17 +9,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 
 class DashboardHomeFragment : Fragment() {
     private lateinit var callback: NavigationCallbackDashboard
+    private lateinit var db: AppDatabase
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-
         if (context is NavigationCallbackDashboard) {
             callback = context
-        } else {
-            throw RuntimeException("$context must implement NavigationCallback")
         }
     }
 
@@ -27,21 +28,43 @@ class DashboardHomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home_dashboard, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        db = AppDatabase.getDatabase(requireContext())
+
+        val titleUsername = view.findViewById<TextView>(R.id.titleUsername)
 
         val actionSearch = view.findViewById<EditText>(R.id.actionSearch)
         val actionToAllBus: Button = view.findViewById(R.id.actionToAllBus)
 
-        actionSearch.setOnClickListener {
-            val intent = Intent(requireActivity(), BusSearchActivity::class.java)
+        val session = SessionManager(requireContext())
+        val email = session.getEmail()
 
-            startActivity(intent)
+        when {
+            email == null -> {
+                session.logout()
+                val intent = Intent(requireActivity(), SigninAuth::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+                startActivity(intent)
+                requireActivity().finish()
+            }
+
+            else -> {
+                lifecycleScope.launch {
+                    val user = db.userDao().getUserByEmail(email)
+                    user?.let {
+                        titleUsername.text = "${user.firstName} ${user.lastName}"
+                    }
+                }
+            }
         }
+
+        actionSearch.setOnClickListener {(requireActivity() as BaseActivity).navigateTo(
+            BusSearchActivity::class.java)}
 
         actionToAllBus.setOnClickListener {
             callback.navigateTo(R.id.nav_bus)

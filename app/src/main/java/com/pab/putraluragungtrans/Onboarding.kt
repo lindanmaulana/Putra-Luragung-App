@@ -16,6 +16,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 class OnboardingPageAdapter(
     fragmentActivity: FragmentActivity,
@@ -39,18 +41,23 @@ class Onboarding : AppCompatActivity() {
         setContentView(R.layout.activity_onboarding)
 
         val viewPager = findViewById<ViewPager2>(R.id.onBoarding)
+        val tabLayout = findViewById<TabLayout>(R.id.tablayout)
         val actionNext = findViewById<Button>(R.id.actionNext)
         val actionBack = findViewById<Button>(R.id.actionBack)
         val actionSkip = findViewById<Button>(R.id.actionSkip)
 
         val pages = listOf(
-            OnboardingPageFragment.newInstance("Selamat Datang di", "Luragung Trans!", "Akses layanan bus dengan mudah langsung dari ponsel Anda cek jadwal, rute, hingga posisi bus.", R.drawable.onboarding_first, R.drawable.onboarding_first_session),
-            OnboardingPageFragment.newInstance("Cepat dan Dapat Diandalkan", "Pelacakan Bus","Temukan lokasi bus, cek estimasi kedatangan, dan rencanakan perjalanan tanpa khawatir.",  R.drawable.onboarding_second, R.drawable.onboarding_second_session),
-            OnboardingPageFragment.newInstance("Pembayaran yang", "Mudah", "Akses layanan bus dengan mudah langsung dari ponsel Anda—cek jadwal, rute, hingga posisi bus.",  R.drawable.onboarding_end, R.drawable.onboarding_end_session)
+            OnboardingPageFragment.newInstance("Selamat Datang di", "Luragung Trans!", "Akses layanan bus dengan mudah langsung dari ponsel Anda cek jadwal, rute, hingga posisi bus.", R.drawable.onboarding_first),
+            OnboardingPageFragment.newInstance("Cepat dan Dapat Diandalkan", "Pelacakan Bus","Temukan lokasi bus, cek estimasi kedatangan, dan rencanakan perjalanan tanpa khawatir.",  R.drawable.onboarding_second),
+            OnboardingPageFragment.newInstance("Pembayaran yang", "Mudah", "Akses layanan bus dengan mudah langsung dari ponsel Anda—cek jadwal, rute, hingga posisi bus.",  R.drawable.onboarding_end)
         )
 
         val adapter = OnboardingPageAdapter(this, pages)
         viewPager.adapter = adapter
+
+        TabLayoutMediator(tabLayout, viewPager) {tab, position ->
+
+        }.attach()
 
         actionNext.setOnClickListener {
             val currentItem = viewPager.currentItem

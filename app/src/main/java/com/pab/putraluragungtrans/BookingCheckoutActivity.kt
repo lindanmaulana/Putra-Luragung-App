@@ -1,28 +1,22 @@
 package com.pab.putraluragungtrans
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.button.MaterialButton
 
-class BusSearchActivity : BaseActivity() {
+class BookingCheckoutActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_bus_search)
+        setContentView(R.layout.activity_booking_checkout)
 
-        val actionSearch = findViewById<Button>(R.id.actionSearch)
-        val actionBack = findViewById<Button>(R.id.actionBack)
+        val actionConfirm = findViewById<MaterialButton>(R.id.actionConfirm)
 
-        actionSearch.setOnClickListener {
-            navigateTo(Dashboard::class.java, R.id.nav_bus)
-        }
-
-        actionBack.setOnClickListener {
-            navigateTo(Dashboard::class.java, R.id.nav_home)
+        actionConfirm.setOnClickListener {
+            navigateTo(BookingPaymentActivity::class.java)
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
