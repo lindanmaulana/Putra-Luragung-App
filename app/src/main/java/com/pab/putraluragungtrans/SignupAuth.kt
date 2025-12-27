@@ -24,7 +24,7 @@ class SignupAuth : BaseActivity() {
         db = AppDatabase.getDatabase(this)
 
         val actionRegister = findViewById<Button>(R.id.actionRegister)
-        val actionBackRegister = findViewById<Button>(R.id.actionBackRegister)
+        val actionBack = findViewById<Button>(R.id.actionBack)
 
         val inputFirstName = findViewById<TextInputEditText>(R.id.inputFirstName)
         val inputLastName = findViewById<TextInputEditText>(R.id.inputLastName)
@@ -82,8 +82,8 @@ class SignupAuth : BaseActivity() {
             signUp(userBaru)
         }
 
-        actionBackRegister.setOnClickListener {
-            navigateTo(SignupAuth::class.java)
+        actionBack.setOnClickListener {
+            navigateTo(SigninAuth::class.java)
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.signupAuth)) { v, insets ->

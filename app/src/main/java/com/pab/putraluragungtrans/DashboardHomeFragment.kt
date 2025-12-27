@@ -16,6 +16,8 @@ import kotlinx.coroutines.launch
 class DashboardHomeFragment : Fragment() {
     private lateinit var callback: NavigationCallbackDashboard
     private lateinit var db: AppDatabase
+    private lateinit var session: SessionManager
+    private lateinit var titleUsername: TextView
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -34,40 +36,35 @@ class DashboardHomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         db = AppDatabase.getDatabase(requireContext())
-
-        val titleUsername = view.findViewById<TextView>(R.id.titleUsername)
+        titleUsername = view.findViewById<TextView>(R.id.titleUsername)
+        session = SessionManager(requireContext())
 
         val actionSearch = view.findViewById<EditText>(R.id.actionSearch)
         val actionToAllBus: Button = view.findViewById(R.id.actionToAllBus)
-
-        val session = SessionManager(requireContext())
-        val email = session.getEmail()
-
-        when {
-            email == null -> {
-                session.logout()
-                val intent = Intent(requireActivity(), SigninAuth::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-
-                startActivity(intent)
-                requireActivity().finish()
-            }
-
-            else -> {
-                lifecycleScope.launch {
-                    val user = db.userDao().getUserByEmail(email)
-                    user?.let {
-                        titleUsername.text = "${user.firstName} ${user.lastName}"
-                    }
-                }
-            }
-        }
 
         actionSearch.setOnClickListener {(requireActivity() as BaseActivity).navigateTo(
             BusSearchActivity::class.java)}
 
         actionToAllBus.setOnClickListener {
             callback.navigateTo(R.id.nav_bus)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        val userEmail = session.getEmail()
+
+        if (userEmail == null) {
+            session.logout()
+            (requireActivity() as BaseActivity).navigateTo(SigninAuth::class.java, isFinal = true)
+            return
+        }
+
+        lifecycleScope.launch {
+            val user = db.userDao().getUserByEmail(userEmail)
+
+            if (isAdded && user != null) titleUsername.text = "${user.firstName} ${user.lastName}"
         }
     }
 }

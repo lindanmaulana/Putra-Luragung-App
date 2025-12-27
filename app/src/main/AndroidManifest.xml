@@ -21,9 +21,6 @@
             android:name=".AccountCreateNewPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".BookingStatusActivity"
-            android:exported="false" />
-        <activity
             android:name=".BookingPaymentActivity"
             android:exported="false" />
         <activity
