@@ -11,13 +11,11 @@ class SeatAdapter(
     private val onSeatClick: (Seat) -> Unit
 ) : RecyclerView.Adapter<SeatAdapter.SeatViewHolder>() {
 
-    // ViewHolder menggunakan findViewById
     class SeatViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val viewSeat: View = itemView.findViewById(R.id.viewSeat)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SeatViewHolder {
-        // Inflate menggunakan layout R langsung
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_seat, parent, false)
         return SeatViewHolder(view)
     }
@@ -25,7 +23,6 @@ class SeatAdapter(
     override fun onBindViewHolder(holder: SeatViewHolder, position: Int) {
         val seat = seatList[position]
 
-        // Logika Lorong (kolom ke-3)
         if (position % 5 == 2) {
             holder.itemView.visibility = View.INVISIBLE
             holder.itemView.isEnabled = false
@@ -33,7 +30,6 @@ class SeatAdapter(
             holder.itemView.visibility = View.VISIBLE
             holder.itemView.isEnabled = true
 
-            // Set warna manual ke viewSeat
             when {
                 seat.isBooked -> {
                     holder.viewSeat.setBackgroundResource(R.drawable.seat_booked_icon)

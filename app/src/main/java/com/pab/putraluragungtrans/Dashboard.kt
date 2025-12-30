@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
@@ -28,6 +27,8 @@ class Dashboard : BaseActivity(), NavigationCallbackDashboard {
 
         bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
 
+        val targetMenuId = intent?.getIntExtra("TARGET_MENU_ID", -1) ?: -1
+
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 if (bottomNav.selectedItemId != R.id.nav_home) {
@@ -39,16 +40,20 @@ class Dashboard : BaseActivity(), NavigationCallbackDashboard {
                 }
             }
         })
+
         ViewCompat.setOnApplyWindowInsetsListener(bottomNav) { view, windowInsets ->
             view.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 this.bottomMargin = 0
             }
-
             WindowInsetsCompat.CONSUMED
         }
 
         if (savedInstanceState == null) {
-            replaceFragmentDashboard(R.id.fragmentContainer, homeFragment)
+            if (targetMenuId != -1) {
+                updateDashboardMenu(targetMenuId)
+            } else {
+                updateDashboardMenu(R.id.nav_home)
+            }
         }
 
         bottomNav.setOnItemSelectedListener { item ->
@@ -56,7 +61,6 @@ class Dashboard : BaseActivity(), NavigationCallbackDashboard {
             true
         }
 
-        handleIntent(intent)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -64,11 +68,9 @@ class Dashboard : BaseActivity(), NavigationCallbackDashboard {
         }
     }
 
-    private fun updateDashboardMenu(itemId: Int) {
-        if (bottomNav.selectedItemId == itemId && supportFragmentManager.findFragmentById(R.id.fragmentContainer) != null) {
-            return
-        }
 
+    private fun updateDashboardMenu(itemId: Int) {
+        val currentFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainer)
         val targetFragment = when(itemId) {
             R.id.nav_home -> homeFragment
             R.id.nav_bus -> busFragment
@@ -77,10 +79,14 @@ class Dashboard : BaseActivity(), NavigationCallbackDashboard {
             else -> homeFragment
         }
 
+        if (currentFragment != null && currentFragment::class == targetFragment::class) {
+            return
+        }
+
         replaceFragmentDashboard(R.id.fragmentContainer, targetFragment)
+
         if (bottomNav.selectedItemId != itemId) {
             bottomNav.setOnItemSelectedListener(null)
-
             bottomNav.selectedItemId = itemId
 
             bottomNav.setOnItemSelectedListener { item ->
@@ -88,6 +94,12 @@ class Dashboard : BaseActivity(), NavigationCallbackDashboard {
                 true
             }
         }
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        handleIntent(intent)
     }
 
     override fun navigateTo(itemId: Int) {

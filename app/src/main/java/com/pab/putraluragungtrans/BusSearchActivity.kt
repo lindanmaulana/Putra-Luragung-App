@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.button.MaterialButton
 
 class BusSearchActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,8 +15,8 @@ class BusSearchActivity : BaseActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_bus_search)
 
-        val actionSearch = findViewById<Button>(R.id.actionSearch)
-        val actionBack = findViewById<Button>(R.id.actionBack)
+        val actionSearch = findViewById<MaterialButton>(R.id.actionSearch)
+        val actionBack = findViewById<MaterialButton>(R.id.actionBack)
 
         actionSearch.setOnClickListener {
             navigateTo(Dashboard::class.java, R.id.nav_bus)

@@ -17,7 +17,7 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.launch
 
-class SigninAuth : AppCompatActivity() {
+class SigninAuth : BaseActivity() {
     private lateinit var db: AppDatabase
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,8 +61,7 @@ class SigninAuth : AppCompatActivity() {
                                 val session = SessionManager(this@SigninAuth)
                                 session.createLoginSession(user.email)
 
-                                val intent = Intent(this@SigninAuth, Dashboard::class.java)
-                                startActivity(intent)
+                                navigateTo(Dashboard::class.java, R.id.nav_home)
                             }
                         }
                     }

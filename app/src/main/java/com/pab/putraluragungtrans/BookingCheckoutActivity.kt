@@ -14,9 +14,14 @@ class BookingCheckoutActivity : BaseActivity() {
         setContentView(R.layout.activity_booking_checkout)
 
         val actionConfirm = findViewById<MaterialButton>(R.id.actionConfirm)
+        val actionBack = findViewById<MaterialButton>(R.id.actionBack)
 
         actionConfirm.setOnClickListener {
             navigateTo(BookingPaymentActivity::class.java)
+        }
+
+        actionBack.setOnClickListener {
+            navigateTo(Dashboard::class.java, R.id.nav_bus, isFinal = true)
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->

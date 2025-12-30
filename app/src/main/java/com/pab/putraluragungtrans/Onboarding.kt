@@ -21,15 +21,13 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class OnboardingPageAdapter(
     fragmentActivity: FragmentActivity,
-    private val pages: List<Fragment> // Daftar Fragment (Halaman Onboarding) Anda
+    private val pages: List<Fragment>
 ) : FragmentStateAdapter(fragmentActivity) {
 
-    // 1. Metode Wajib: Mengembalikan jumlah total halaman.
     override fun getItemCount(): Int {
         return pages.size
     }
 
-    // 2. Metode Wajib: Membuat dan mengembalikan Fragment untuk posisi tertentu.
     override fun createFragment(position: Int): Fragment {
         return pages[position]
     }
