@@ -29,22 +29,11 @@ class DashboardBusFragment : Fragment() {
             startActivity(intent)
         }
 
-        // 1. Siapkan data bus
         val sampleBusList = createSampleBusList()
 
-        // 2. Cari RecyclerView di dalam layout fragment
-        // Pastikan ID di fragment_search_dashboard.xml adalah 'recyclerViewBusList'
         val recyclerView = view.findViewById<RecyclerView>(R.id.containerRecycleViewListBus)
 
-        // 3. Inisialisasi dan pasang Adapter
         val busAdapter = BusAdapter(sampleBusList) { selectedBus ->
-            // --- Logic saat item bus diklik ---
-            // Contoh: Navigasi ke Detail Bus, menggunakan objek selectedBus (Parcelable)
-            // (Anda bisa menambahkan Intent atau Navigasi di sini)
-
-            // Contoh penggunaan:
-            // val action = SearchDashboardFragmentDirections.actionToDetailBus(selectedBus)
-            // findNavController().navigate(action)
         }
 
         recyclerView.adapter = busAdapter
