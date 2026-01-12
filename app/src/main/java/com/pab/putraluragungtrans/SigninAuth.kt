@@ -61,7 +61,7 @@ class SigninAuth : BaseActivity() {
                                 val session = SessionManager(this@SigninAuth)
                                 session.createLoginSession(user.email)
 
-                                navigateTo(Dashboard::class.java, R.id.nav_home)
+                                navigateTo(Dashboard::class.java, R.id.nav_home, isFinal = true)
                             }
                         }
                     }
